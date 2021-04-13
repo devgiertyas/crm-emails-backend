@@ -29,7 +29,7 @@ app.use(express.json());
 
 app.use(routes);
 
-app.listen(3000, function(){
+app.listen(process.env.MONGO_URL || 3000, function(){
     console.log('Server rodando na porta 3000')
 });
 
