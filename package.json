@@ -19,5 +19,7 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.7"
-  }
+  },
+  "repository": "https://github.com/devgiertyas/crm-emails-backend.git",
+  "author": "Natan <natadasilva10@gmail.com>"
 }

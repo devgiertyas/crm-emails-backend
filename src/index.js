@@ -9,9 +9,7 @@ const routes = require('../src/routes')
 
 const app = express();
 
-var stringconnect = process.env.MONGO_URL;
-
-mongoose.connect(stringconnect,{
+mongoose.connect(process.env.MONGO_URL,{
 useUnifiedTopology:true,
 useNewUrlParser:true,
 useFindAndModify:false
@@ -29,7 +27,7 @@ app.use(express.json());
 
 app.use(routes);
 
-app.listen(process.env.MONGO_URL || 3000, function(){
+app.listen(process.env.PORT || 3000, function(){
     console.log('Server rodando na porta 3000')
 });
 
