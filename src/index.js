@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 const express  = require ('express');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
@@ -7,7 +9,9 @@ const routes = require('../src/routes')
 
 const app = express();
 
-mongoose.connect('mongodb+srv://lojamix:l0j4m1x@crm.dnn1f.mongodb.net/test',{
+var stringconnect = process.env.MONGO_URL;
+
+mongoose.connect(stringconnect,{
 useUnifiedTopology:true,
 useNewUrlParser:true,
 useFindAndModify:false
