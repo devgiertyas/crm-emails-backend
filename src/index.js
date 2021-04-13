@@ -28,6 +28,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(routes);
 
 app.listen(process.env.PORT || 3000, function(){
-    console.log('Server rodando na porta 3000')
+    console.log('Server rodando na porta {process.env.PORT}')
 });
 

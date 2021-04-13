@@ -15,7 +15,7 @@ routes.get('/api/contacts',Contact.index)
 
 // Rotas de Usuários
 routes.post('/api/usuarios',User.create);
-routes.get('/api/usuarios',User.index);
+routes.get('/api/usuario',User.index);
 routes.get('/api/usuarios.details/:_id',User.details);
 routes.delete('/api/usuarios/:_id',User.delete);
 routes.put('/api/usuarios',User.update);
