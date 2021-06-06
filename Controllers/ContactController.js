@@ -23,6 +23,21 @@ module.exports = {
         {
           return res.status(500).json(contact);
         }
-
-  }
+  },
+  async details(req,res){
+    const {_id} = req.params;
+    const contact = await Contact.findOne({_id});
+    res.json(contact);
+},
+async delete(req,res){
+    const { _id } = req.params;
+    const contact = await Contact.findByIdAndDelete({_id});
+    return res.json(contact);
+},
+async update(req,res){
+    const { _id, nome_contato, email_contato, telefone_contato } = req.body;
+    const data = {nome_contato, email_contato, telefone_contato};
+    const contact = await Contact.findOneAndUpdate({_id},data,{new:true});
+    res.json(contact);
+},  
 }
