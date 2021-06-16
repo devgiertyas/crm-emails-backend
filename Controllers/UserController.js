@@ -6,7 +6,6 @@ const { checkout } = require('../src/routes.js');
 module.exports = {
     async index(req,res){
         const user = await Usuario.find();
-        console.log(user);
         res.json(user);
     },
     async create(req,res){

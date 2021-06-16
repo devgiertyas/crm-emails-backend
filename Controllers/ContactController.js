@@ -39,5 +39,5 @@ async update(req,res){
     const data = {nome_contato, email_contato, telefone_contato};
     const contact = await Contact.findOneAndUpdate({_id},data,{new:true});
     res.json(contact);
-},  
+},    
 }
