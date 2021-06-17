@@ -5,6 +5,7 @@ const routes = express.Router();
 const Contact = require('../Controllers/ContactController')
 const User = require('../Controllers/UserController')
 const Email = require('../Controllers/EmailController')
+const Group = require('../Controllers/GroupController')
 
 
 routes.get('/',User.index);
@@ -23,8 +24,15 @@ routes.get('/api/usuarios.details/:_id',User.details);
 routes.delete('/api/usuarios/:_id',User.delete);
 routes.put('/api/usuarios',User.update);
 
+// Rota e Grupo
+routes.post('/api/grupos',Group.create);
+routes.get('/api/grupos',Group.index);
+routes.delete('/api/grupos/:_id',Group.delete);
+
 // Rota de Login 
 routes.post('/api/usuarios/login',User.login);
 routes.get('/api/usuarios/checktoken',User.checkToken);
 routes.get('/api/usuarios/destroytoken',User.destroyToken);
+
+
 module.exports = routes;

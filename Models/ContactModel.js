@@ -4,6 +4,8 @@ const DataSchema = new mongoose.Schema({
     nome_contato: String,
     email_contato: String,
     telefone_contato: String,
+    group:[{ type: mongoose.Schema.Types.ObjectId,
+        ref: 'Groups'}]   
 }, {
     timestamps: true
 });
