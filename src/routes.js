@@ -28,6 +28,9 @@ routes.put('/api/usuarios',User.update);
 routes.post('/api/grupos',Group.create);
 routes.get('/api/grupos',Group.index);
 routes.delete('/api/grupos/:_id',Group.delete);
+routes.get('/api/grupos.details/:_id',Group.details);
+routes.put('/api/grupos/removercontato/:_id',Group.deletecontact);
+
 
 // Rota de Login 
 routes.post('/api/usuarios/login',User.login);

@@ -1,6 +1,7 @@
 const { json } = require('express');
 const Group = require('../Models/GroupModel');
-const Contato = require('../Models/ContactModel')
+const Contato = require('../Models/ContactModel');
+const { get } = require('mongoose');
 
 module.exports = {
     async index(req,res){
@@ -23,5 +24,22 @@ module.exports = {
     const { _id } = req.params;
     const grupo = await Group.findByIdAndDelete({ _id });
     return res.json(grupo);
-},  
+}, 
+async details(req,res){
+  const {_id} = req.params;
+  const grupo = await Group.findOne({_id}).populate('contacts');
+  res.json(grupo);
+}, 
+async deletecontact(req, res){
+  try {
+   
+    const {_id} = req.params;
+    const {contatos } = req.body;
+    const grupo = await Group.findByIdAndUpdate(_id, {contacts: contatos}, { new: true })
+    res.json(grupo);
+ 
+  } catch (error) {
+    console.log(error)
+  }
+},
 }
