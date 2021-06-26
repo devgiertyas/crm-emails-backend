@@ -21,7 +21,7 @@ useFindAndModify:false
     if(err)
     console.log(err);
     else
-    console.log('Conexão feita com suecesso');
+    console.log('Conexão feita com sucesso');
 });
 
 app.use(cors());
