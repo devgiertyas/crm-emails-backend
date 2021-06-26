@@ -11,6 +11,7 @@ const Group = require('../Controllers/GroupController')
 routes.get('/',User.index);
 
 routes.post('/api/email/send', Email.SendEmail)
+routes.get('/api/email/list', Email.index)
 
 // Rotas de Contatos
 routes.post('/api/contacts', Contact.create)
