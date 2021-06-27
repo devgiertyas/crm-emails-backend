@@ -15,6 +15,8 @@ routes.post('/api/email/send', Email.SendEmail)
 routes.get('/api/email/list', Email.index)
 routes.delete('/api/email/:_id',Email.delete);
 routes.get('/api/email.details/:_id',Email.details);
+routes.get('/api/email/count',Email.emailCountDay);
+routes.get('/api/email/lasts', Email.lastfiveEmails);
 
 // Rotas de Contatos
 routes.post('/api/contacts', Contact.create)
