@@ -4,6 +4,9 @@ const DataSchema = new mongoose.Schema({
     nome_grupo: String,
     mensagem: String,
     assunto: String,
+    situacao: Number,
+    erro: String,
+    usuario: { type: mongoose.Schema.Types.ObjectId, ref: 'Users' },
     contacts: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Contacts',

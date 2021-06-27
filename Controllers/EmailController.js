@@ -27,15 +27,16 @@ async SendEmail(req, res) {
       from: 'crmemailsucs@gmail.com', // Change to your verified sender
       subject: data.assunto,
       text: data.mensagem,
-      html: '<strong>and easy to do anywhere, even with Node.js</strong>',
+      html: '<p>'+data.mensagem+'</p>',
     }
   sgMail
       .send(msg)
       .then(() => {
-        const email = Email.create({assunto:data.assunto,mensagem: data.mensagem, contacts: data.remetentes});
+        const email = Email.create({assunto:data.assunto,mensagem: data.mensagem, contacts: data.remetentes, usuario: data.idUsuario, situacao: 1});
         console.log('Email sent')
       })
       .catch((error) => {
+        const email = Email.create({assunto:data.assunto,mensagem: data.mensagem, contacts: data.remetentes, usuario: data.idUsuario, situacao: 0, erro:error});
         console.error(error)
       })
     }
@@ -44,7 +45,17 @@ async SendEmail(req, res) {
     }
 },
 async index(req,res){
-  const email = await Email.find().populate('contacts');
+  const email = await Email.find().populate('usuario').populate('usuario','nome_usuario');
   res.json(email);
 },
+async delete(req, res) {
+  const { _id } = req.params;
+  const email = await Email.findByIdAndDelete({ _id });
+  return res.json(email);
+},
+async details(req,res){
+  const {_id} = req.params;
+  const email = await Email.findOne({ _id }).populate('usuario').populate('usuario','nome_usuario');
+  res.json(email);
+}, 
 }
